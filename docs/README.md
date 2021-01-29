@@ -1,5 +1,4 @@
-# Pragmatic Programing Exercise
-
+# テンプレート
 ## 概要
 
 ### 目的
