@@ -1,0 +1,32 @@
+{
+  "name": "pragmatic-programing-exercise",
+  "version": "1.0.0",
+  "description": "| ソフトウェア   | バージョン | 備考 |\r | :------------- | :--------- | :--- |\r | nodejs         | 10.16.3     |      |",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "browser-sync start -s ./ --watch --port 8080 --ui-port 8081",
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k2works/pragmatic-programing-exercise.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k2works/pragmatic-programing-exercise/issues"
+  },
+  "homepage": "https://github.com/k2works/pragmatic-programing-exercise#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/register": "^7.12.10",
+    "browser-sync": "^2.26.14",
+    "jest": "^26.6.3"
+  }
+}

@@ -13,6 +13,11 @@
 
 ### Quick Start
 
+```bash
+npm install
+npm start
+```
+
 ## 構成
 
 - [構築](#構築)
@@ -21,6 +26,11 @@
 - [開発](#開発)
 
 ### 構築
+
+```bash
+npm init -y
+npm install --save-dev browser-sync jest @babel/core @babel/cli @babel/preset-env @babel/register
+```
 
 **[⬆ back to top](#構成)**
 
