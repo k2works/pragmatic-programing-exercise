@@ -35,6 +35,7 @@ npm install webpack webpack-cli html-webpack-plugin --save-dev
 npm install --save-dev npm-run-all watch foreman cpx rimraf marked
 touch Procfile
 npm install cypress
+npm install --save-dev cypress-cucumber-preprocessor
 ```
 
 **[⬆ back to top](#構成)**
