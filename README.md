@@ -1,5 +1,6 @@
 # Pragmatic Programing Exercise
 
+[![Azure DevOps](https://img.shields.io/badge/AzureDevOps-ppe-blue)](https://dev.azure.com/k2works/ppe)
 ![Node.js CI](https://github.com/k2works/pragmatic-programing-exercise/workflows/Node.js%20CI/badge.svg)
 ## 概要
 
