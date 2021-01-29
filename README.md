@@ -31,6 +31,7 @@ npm start
 npm init -y
 npm install --save-dev browser-sync jest @babel/core @babel/cli @babel/preset-env @babel/register
 npm install webpack webpack-cli html-webpack-plugin --save-dev
+npm install --save-dev npm-run-all watch foreman cpx rimraf marked
 ```
 
 **[⬆ back to top](#構成)**
