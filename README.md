@@ -1,5 +1,6 @@
 # Pragmatic Programing Exercise
 
+![Node.js CI](https://github.com/k2works/pragmatic-programing-exercise/workflows/Node.js%20CI/badge.svg)
 ## 概要
 
 ### 目的
@@ -49,9 +50,17 @@ npm run deploy
 
 ### 運用
 
+```bash
+npm run deploy
+```
+
 **[⬆ back to top](#構成)**
 
 ### 開発
+
+```bash
+npm start
+```
 
 **[⬆ back to top](#構成)**
 
