@@ -24,11 +24,13 @@ npm start
 
 ## 構成
 
+- [設計](#設計)
 - [構築](#構築)
 - [配置](#配置)
-- [運用](#運用)
 - [開発](#開発)
+- [運用](#運用)
 
+### 設計
 ### 構築
 
 ```bash
@@ -54,18 +56,18 @@ npm run deploy
 
 **[⬆ back to top](#構成)**
 
-### 運用
-
-```bash
-npm run deploy
-```
-
-**[⬆ back to top](#構成)**
-
 ### 開発
 
 ```bash
 npm start
+```
+
+**[⬆ back to top](#構成)**
+
+### 運用
+
+```bash
+npm run deploy
 ```
 
 **[⬆ back to top](#構成)**
