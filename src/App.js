@@ -25,23 +25,26 @@ export class App {
 const select = (table) => {
   let list;
   let command;
+  const render = (contents) => {
+    document.getElementById("app-table").innerHTML = contents;
+  };
   const changeEvent = (e) => {
     const value = e.target.value;
     switch (value) {
       case "1":
         command = new Fibonacci(new Fibonacci(new FibonacciRecursive()));
         list = command.generateList(100);
-        document.getElementById("app-table").innerHTML = table(list);
+        render(table(list));
         break;
       case "2":
         command = new Fibonacci(new Fibonacci(new FibonacciLoop()));
         list = command.generateList(100);
-        document.getElementById("app-table").innerHTML = table(list);
+        render(table(list));
         break;
       case "3":
         command = new Fibonacci(new Fibonacci(new FibonacciGeneralTerm()));
         list = command.generateList(100);
-        document.getElementById("app-table").innerHTML = table(list);
+        render(table(list));
         break;
       default:
         throw "該当するアルゴリズムが存在しません";
