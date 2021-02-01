@@ -1,9 +1,21 @@
 export class App {
   constructor() {
-    const command = new FibonacciRecursive();
+    const algorithm = new FibonacciRecursive();
+    const command = new FibonacciRecursive(algorithm);
     document.getElementById("app").innerHTML = command.exec(40);
   }
 }
+
+export class Fibonacci {
+  constructor(algorithm) {
+    this.algorithm = algorithm;
+  }
+
+  exec(number) {
+    return this.algorithm.exec(number);
+  }
+}
+
 export class FibonacciRecursive {
   exec(number, memo = []) {
     if (memo[number]) return memo[number];

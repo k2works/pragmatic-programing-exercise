@@ -1,4 +1,5 @@
 import {
+  Fibonacci,
   FibonacciGeneralTerm,
   FibonacciLoop,
   FibonacciRecursive,
@@ -9,9 +10,9 @@ describe("フィボナッチ数列", () => {
   let loop;
   let generalTerm;
   beforeEach(() => {
-    recursive = new FibonacciRecursive();
-    loop = new FibonacciLoop();
-    generalTerm = new FibonacciGeneralTerm();
+    recursive = new Fibonacci(new FibonacciRecursive());
+    loop = new Fibonacci(new FibonacciLoop());
+    generalTerm = new Fibonacci(new FibonacciGeneralTerm());
   });
 
   test.each([
