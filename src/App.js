@@ -8,9 +8,9 @@ export class App {
   render(list) {
     const contents = `
       <div>
-        ${select(table).contents}
+        ${selectComponent(tableComponent).contents}
         <div id="app-table">
-          ${table(list)}
+          ${tableComponent(list)}
         </div>
       </div>
     `;
@@ -18,11 +18,11 @@ export class App {
     document.getElementById("app").innerHTML = contents;
     document
       .getElementById("app-select")
-      .addEventListener("change", select(table).changeEvent);
+      .addEventListener("change", selectComponent(tableComponent).changeEvent);
   }
 }
 
-const select = (table) => {
+const selectComponent = (tableComponent) => {
   let list;
   let command;
   const render = (contents) => {
@@ -34,17 +34,17 @@ const select = (table) => {
       case "1":
         command = new Fibonacci(new Fibonacci(new FibonacciRecursive()));
         list = command.generateList(100);
-        render(table(list));
+        render(tableComponent(list));
         break;
       case "2":
         command = new Fibonacci(new Fibonacci(new FibonacciLoop()));
         list = command.generateList(100);
-        render(table(list));
+        render(tableComponent(list));
         break;
       case "3":
         command = new Fibonacci(new Fibonacci(new FibonacciGeneralTerm()));
         list = command.generateList(100);
-        render(table(list));
+        render(tableComponent(list));
         break;
       default:
         throw "該当するアルゴリズムが存在しません";
@@ -62,7 +62,7 @@ const select = (table) => {
   return { contents, changeEvent };
 };
 
-const table = (list) => {
+const tableComponent = (list) => {
   const header = [...Array(10).keys()].map((i) => `<td>${i + 1}</td>`).join("");
   const body = [...Array(10).keys()]
     .map((i) => (i === 0 ? 0 : i * 10))
