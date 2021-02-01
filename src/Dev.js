@@ -49,6 +49,7 @@ Protocol <|-- FibonacciGeneralTerm
 class Fibonacci {
   algorith
   exec(number)
+  generateList(count)
 }
 class FibonacciRecursive {
   exec(number)
