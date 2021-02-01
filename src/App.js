@@ -1,5 +1,8 @@
 export class App {
   constructor() {
+    const command = new Fibonacci(new FibonacciRecursive());
+    const list = command.generateList(100);
+
     const select = () => {
       return `
         <select>
@@ -10,9 +13,7 @@ export class App {
       `;
     };
 
-    const table = () => {
-      const command = new Fibonacci(new FibonacciRecursive());
-      const list = command.generateList(100);
+    const table = (list) => {
       const header = [...Array(10).keys()]
         .map((i) => `<td>${i + 1}</td>`)
         .join("");
@@ -47,7 +48,7 @@ export class App {
     const contents = `
       <div>
         ${select()}
-        ${table()}
+        ${table(list)}
       </div>
     `;
 
