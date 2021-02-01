@@ -76,6 +76,14 @@ export class Fibonacci {
   exec(number) {
     return this.algorithm.exec(number);
   }
+
+  generateList(count) {
+    let result = [];
+    for (let i = 0; i <= count; i++) {
+      result.push(this.exec(i));
+    }
+    return result;
+  }
 }
 
 export class FibonacciRecursive {
