@@ -2,11 +2,12 @@ export class App {
   constructor() {
     const command = new Fibonacci(new FibonacciRecursive());
     const list = command.generateList(100);
-    this.render(list);
+    fibonacciComponent(list);
   }
+}
 
-  render(list) {
-    const contents = `
+const fibonacciComponent = (list) => {
+  const contents = `
       <div>
         ${selectComponent(tableComponent).contents}
         <div id="app-table">
@@ -15,12 +16,11 @@ export class App {
       </div>
     `;
 
-    document.getElementById("app").innerHTML = contents;
-    document
-      .getElementById("app-select")
-      .addEventListener("change", selectComponent(tableComponent).changeEvent);
-  }
-}
+  document.getElementById("app").innerHTML = contents;
+  document
+    .getElementById("app-select")
+    .addEventListener("change", selectComponent(tableComponent).changeEvent);
+};
 
 const selectComponent = (tableComponent) => {
   let list;
