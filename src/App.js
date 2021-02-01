@@ -78,11 +78,7 @@ export class Fibonacci {
   }
 
   generateList(count) {
-    let result = [];
-    for (let i = 0; i <= count; i++) {
-      result.push(this.exec(i));
-    }
-    return result;
+    return [...Array(count + 1).keys()].map((i) => this.exec(i));
   }
 }
 
