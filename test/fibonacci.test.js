@@ -3,7 +3,7 @@ import {
   FibonacciGeneralTerm,
   FibonacciLoop,
   FibonacciRecursive,
-} from "./App.js";
+} from "../src/domain/fibonacci.js";
 
 describe("フィボナッチ数列", () => {
   let recursive;
