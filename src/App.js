@@ -94,7 +94,7 @@ export class Fibonacci {
   }
 
   exec(number) {
-    return this.algorithm.exec(number);
+    return BigInt(this.algorithm.exec(number));
   }
 
   generateList(count) {
