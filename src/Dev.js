@@ -40,6 +40,11 @@ const contents = `
 `;
 
 const uml = `
+class Fibonacci {
+  {static} recursive(number, memo)
+  {static} loop(number)
+  {static} generalTerm(number)
+}
 `;
 
 const erd = `
