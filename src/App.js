@@ -2,34 +2,53 @@ export class App {
   constructor() {
     const command = new Fibonacci(new FibonacciRecursive());
     const list = command.generateList(100);
+    this.render(list);
+  }
 
-    const select = (table) => {
-      let list;
-      let command;
-      const changeEvent = (e) => {
-        const value = e.target.value;
-        switch (value) {
-          case "1":
-            command = new Fibonacci(new Fibonacci(new FibonacciRecursive()));
-            list = command.generateList(100);
-            document.getElementById("app-table").innerHTML = table(list);
-            break;
-          case "2":
-            command = new Fibonacci(new Fibonacci(new FibonacciLoop()));
-            list = command.generateList(100);
-            document.getElementById("app-table").innerHTML = table(list);
-            break;
-          case "3":
-            command = new Fibonacci(new Fibonacci(new FibonacciGeneralTerm()));
-            list = command.generateList(100);
-            document.getElementById("app-table").innerHTML = table(list);
-            break;
-          default:
-            throw "該当するアルゴリズムが存在しません";
-        }
-      };
+  render(list) {
+    const contents = `
+      <div>
+        ${select(table).contents}
+        <div id="app-table">
+          ${table(list)}
+        </div>
+      </div>
+    `;
 
-      const contents = `
+    document.getElementById("app").innerHTML = contents;
+    document
+      .getElementById("app-select")
+      .addEventListener("change", select(table).changeEvent);
+  }
+}
+
+const select = (table) => {
+  let list;
+  let command;
+  const changeEvent = (e) => {
+    const value = e.target.value;
+    switch (value) {
+      case "1":
+        command = new Fibonacci(new Fibonacci(new FibonacciRecursive()));
+        list = command.generateList(100);
+        document.getElementById("app-table").innerHTML = table(list);
+        break;
+      case "2":
+        command = new Fibonacci(new Fibonacci(new FibonacciLoop()));
+        list = command.generateList(100);
+        document.getElementById("app-table").innerHTML = table(list);
+        break;
+      case "3":
+        command = new Fibonacci(new Fibonacci(new FibonacciGeneralTerm()));
+        list = command.generateList(100);
+        document.getElementById("app-table").innerHTML = table(list);
+        break;
+      default:
+        throw "該当するアルゴリズムが存在しません";
+    }
+  };
+
+  const contents = `
         <select id="app-select">
           <option value="1">再帰</option>
           <option value="2">ループ</option>
@@ -37,19 +56,17 @@ export class App {
         </select>
       `;
 
-      return { contents, changeEvent };
-    };
+  return { contents, changeEvent };
+};
 
-    const table = (list) => {
-      const header = [...Array(10).keys()]
-        .map((i) => `<td>${i + 1}</td>`)
-        .join("");
-      const body = [...Array(10).keys()]
-        .map((i) => (i === 0 ? 0 : i * 10))
-        .map((j) =>
-          [...Array(10).keys()].map((k) => `<td>${list[k + j]}</td>`).join("")
-        );
-      return `
+const table = (list) => {
+  const header = [...Array(10).keys()].map((i) => `<td>${i + 1}</td>`).join("");
+  const body = [...Array(10).keys()]
+    .map((i) => (i === 0 ? 0 : i * 10))
+    .map((j) =>
+      [...Array(10).keys()].map((k) => `<td>${list[k + j]}</td>`).join("")
+    );
+  return `
         <table>
           <thead bgcolor="darkgray">
             <tr>
@@ -70,23 +87,7 @@ export class App {
           </tbody>
         </table>
       `;
-    };
-
-    const contents = `
-      <div>
-        ${select(table).contents}
-        <div id="app-table">
-          ${table(list)}
-        </div>
-      </div>
-    `;
-
-    document.getElementById("app").innerHTML = contents;
-    document
-      .getElementById("app-select")
-      .addEventListener("change", select(table).changeEvent);
-  }
-}
+};
 
 export class Fibonacci {
   constructor(algorithm) {
