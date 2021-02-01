@@ -1,9 +1,11 @@
-import { Fibonacci } from "./App.js";
+import { Fibonacci, FibonacciRecursive } from "./App.js";
 
 describe("フィボナッチ数列", () => {
   let fib;
+  let recursive;
   beforeEach(() => {
     fib = Fibonacci;
+    recursive = new FibonacciRecursive();
   });
 
   test.each([
@@ -14,11 +16,11 @@ describe("フィボナッチ数列", () => {
     [4, 3],
     [5, 5],
   ])("%iを渡したら%pを返す", (number, expected) => {
-    expect(fib.recursive(number)).toEqual(expected);
+    expect(recursive.exec(number)).toEqual(expected);
   });
 
   test("大きな数値を計算する_再起処理による実装", () => {
-    expect(fib.recursive(40)).toEqual(102334155);
+    expect(recursive.exec(40)).toEqual(102334155);
   });
 
   test("大きな数値を計算する_ループ処理による実装", () => {
