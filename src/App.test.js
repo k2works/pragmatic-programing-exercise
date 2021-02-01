@@ -1,11 +1,13 @@
-import { Fibonacci, FibonacciRecursive } from "./App.js";
+import { Fibonacci, FibonacciLoop, FibonacciRecursive } from "./App.js";
 
 describe("フィボナッチ数列", () => {
   let fib;
   let recursive;
+  let loop;
   beforeEach(() => {
     fib = Fibonacci;
     recursive = new FibonacciRecursive();
+    loop = new FibonacciLoop();
   });
 
   test.each([
@@ -24,7 +26,7 @@ describe("フィボナッチ数列", () => {
   });
 
   test("大きな数値を計算する_ループ処理による実装", () => {
-    expect(fib.loop(40)).toEqual(102334155);
+    expect(loop.exec(40)).toEqual(102334155);
   });
 
   test("大きな数値を計算する_一般項による実装", () => {
