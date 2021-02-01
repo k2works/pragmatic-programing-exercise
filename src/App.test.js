@@ -1,13 +1,20 @@
-import { Fibonacci, FibonacciLoop, FibonacciRecursive } from "./App.js";
+import {
+  Fibonacci,
+  FibonacciGeneralTerm,
+  FibonacciLoop,
+  FibonacciRecursive,
+} from "./App.js";
 
 describe("フィボナッチ数列", () => {
   let fib;
   let recursive;
   let loop;
+  let generalTerm;
   beforeEach(() => {
     fib = Fibonacci;
     recursive = new FibonacciRecursive();
     loop = new FibonacciLoop();
+    generalTerm = new FibonacciGeneralTerm();
   });
 
   test.each([
@@ -30,6 +37,6 @@ describe("フィボナッチ数列", () => {
   });
 
   test("大きな数値を計算する_一般項による実装", () => {
-    expect(fib.generalTerm(40)).toEqual(102334155);
+    expect(generalTerm.exec(40)).toEqual(102334155);
   });
 });
