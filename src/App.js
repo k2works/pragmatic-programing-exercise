@@ -1,6 +1,6 @@
 import { Fibonacci } from "./presentation/Fibonacci.js";
-import { ValueCommand } from "./domain/fibonacci/valueCommand";
-import { ListCommand } from "./domain/fibonacci/listCommand";
+import { ValueCommand } from "./application/fibonacci/valueCommand";
+import { ListCommand } from "./application/fibonacci/listCommand";
 import { Recursive } from "./domain/fibonacci/recursive";
 export class App {
   constructor() {

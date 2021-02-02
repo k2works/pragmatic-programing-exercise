@@ -1,5 +1,5 @@
-import { ValueCommand } from "../../domain/fibonacci/valueCommand";
-import { ListCommand } from "../../domain/fibonacci/listCommand";
+import { ValueCommand } from "../../application/fibonacci/valueCommand";
+import { ListCommand } from "../../application/fibonacci/listCommand";
 import { Recursive } from "../../domain/fibonacci/recursive";
 import { Loop } from "../../domain/fibonacci/loop";
 import { GeneralTerm } from "../../domain/fibonacci/generalTerm";
