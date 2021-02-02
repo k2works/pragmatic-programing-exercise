@@ -1,10 +1,11 @@
 import { Select } from "./component/Select";
 import { Table } from "./component/Table";
 
-export const Fibonacci = (list) => {
+export const Fibonacci = (list, service) => {
+  const select = Select(Table, service);
   const contents = `
       <div>
-        ${Select(Table).contents}
+        ${select.contents}
         <div id="app-table">
           ${Table(list)}
         </div>
@@ -14,5 +15,5 @@ export const Fibonacci = (list) => {
   document.getElementById("app").innerHTML = contents;
   document
     .getElementById("app-select")
-    .addEventListener("change", Select(Table).changeEvent);
+    .addEventListener("change", select.changeEvent);
 };

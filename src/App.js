@@ -4,6 +4,6 @@ export class App {
   constructor() {
     const service = new Service();
     const list = service.recursiveList(100);
-    Fibonacci(list);
+    Fibonacci(list, service);
   }
 }

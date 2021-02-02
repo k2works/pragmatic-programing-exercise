@@ -1,14 +1,11 @@
-import { Service } from "../../application/fibonacci/service";
-export const Select = (table) => {
+export const Select = (table, service) => {
   let list;
-  let command;
   const render = (contents) => {
     document.getElementById("app-table").innerHTML = contents;
   };
 
   const changeEvent = (e) => {
     const value = e.target.value;
-    const service = new Service();
     switch (value) {
       case "1":
         list = service.recursiveList(100);
