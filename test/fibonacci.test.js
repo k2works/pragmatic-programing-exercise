@@ -3,6 +3,7 @@ import { ListCommand } from "../src/application/fibonacci/listCommand";
 import { Recursive } from "../src/domain/fibonacci/recursive";
 import { Loop } from "../src/domain/fibonacci/loop";
 import { GeneralTerm } from "../src/domain/fibonacci/generalTerm";
+import { Service } from "../src/application/fibonacci/service";
 
 describe("フィボナッチ数列", () => {
   let recursive;
@@ -43,5 +44,30 @@ describe("フィボナッチ数列", () => {
 
     expect(result[0]).toEqual(BigInt(0));
     expect(result[result.length - 1]).toEqual(BigInt(102334155));
+  });
+});
+
+describe("フィボナッチ数列サービス", () => {
+  let service;
+  beforeEach(() => {
+    service = new Service();
+  });
+
+  test("再帰リストを返す", () => {
+    const result = service.recursiveList(5);
+
+    expect(result[5]).toEqual(BigInt(5));
+  });
+
+  test("ループリストを返す", () => {
+    const result = service.loopList(5);
+
+    expect(result[5]).toEqual(BigInt(5));
+  });
+
+  test("一般項リストを返す", () => {
+    const result = service.generalTermList(5);
+
+    expect(result[5]).toEqual(BigInt(5));
   });
 });

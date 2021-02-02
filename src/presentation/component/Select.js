@@ -1,8 +1,4 @@
-import { ValueCommand } from "../../application/fibonacci/valueCommand";
-import { ListCommand } from "../../application/fibonacci/listCommand";
-import { Recursive } from "../../domain/fibonacci/recursive";
-import { Loop } from "../../domain/fibonacci/loop";
-import { GeneralTerm } from "../../domain/fibonacci/generalTerm";
+import { Service } from "../../application/fibonacci/service";
 export const Select = (table) => {
   let list;
   let command;
@@ -12,20 +8,18 @@ export const Select = (table) => {
 
   const changeEvent = (e) => {
     const value = e.target.value;
+    const service = new Service();
     switch (value) {
       case "1":
-        command = new ListCommand(new ValueCommand(new Recursive()));
-        list = command.exec(100);
+        list = service.recursiveList(100);
         render(table(list));
         break;
       case "2":
-        command = new ListCommand(new ValueCommand(new Loop()));
-        list = command.exec(100);
+        list = service.loopList(100);
         render(table(list));
         break;
       case "3":
-        command = new ListCommand(new ValueCommand(new GeneralTerm()));
-        list = command.exec(100);
+        list = service.generalTermList(100);
         render(table(list));
         break;
       default:
