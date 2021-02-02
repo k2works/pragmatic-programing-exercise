@@ -1,9 +1,7 @@
-import {
-  Fibonacci,
-  FibonacciRecursive,
-  FibonacciLoop,
-  FibonacciGeneralTerm,
-} from "../domain/fibonacci.js";
+import { Command } from "../domain/fibonacci/command";
+import { Recursive } from "../domain/fibonacci/recursive";
+import { Loop } from "../domain/fibonacci/loop";
+import { GeneralTerm } from "../domain/fibonacci/generalTerm";
 
 export const fibonacciComponent = (list) => {
   const contents = `
@@ -31,17 +29,17 @@ const selectComponent = (tableComponent) => {
     const value = e.target.value;
     switch (value) {
       case "1":
-        command = new Fibonacci(new Fibonacci(new FibonacciRecursive()));
+        command = new Command(new Recursive());
         list = command.generateList(100);
         render(tableComponent(list));
         break;
       case "2":
-        command = new Fibonacci(new Fibonacci(new FibonacciLoop()));
+        command = new Command(new Loop());
         list = command.generateList(100);
         render(tableComponent(list));
         break;
       case "3":
-        command = new Fibonacci(new Fibonacci(new FibonacciGeneralTerm()));
+        command = new Command(new GeneralTerm());
         list = command.generateList(100);
         render(tableComponent(list));
         break;
