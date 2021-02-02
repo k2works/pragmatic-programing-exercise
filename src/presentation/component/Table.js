@@ -1,5 +1,5 @@
 export const Table = (list) => {
-  const header = [...Array(10).keys()].map((i) => `<td>${i + 1}</td>`).join("");
+  const header = [...Array(10).keys()].map((i) => `<td>${i}</td>`).join("");
   const body = [...Array(10).keys()]
     .map((i) => (i === 0 ? 0 : i * 10))
     .map((j) =>
