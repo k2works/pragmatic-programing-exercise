@@ -42,37 +42,45 @@ const contents = `
 `;
 
 const uml = `
-Service -> CommandProtocol
-ListCommand *- ValueCommand
-CommandProtocol <|-- ListCommand
-CommandProtocol <|-- ValueCommand
-ValueCommand *- AlgorithmProtocol
-AlgorithmProtocol <|-- Recursive
-AlgorithmProtocol <|-- Loop
-AlgorithmProtocol <|-- GeneralTerm
-class Service {
-  recursiveList(count)
-  loopList(count)
-  generalTermList(count)
+package Presentation {
+  class Fibonacci {}
 }
-class CommandProtocol {
+package Application {
+  Fibonacci -> Service
+  Service -> CommandProtocol
+  ListCommand *- ValueCommand
+  CommandProtocol <|-- ListCommand
+  CommandProtocol <|-- ValueCommand
+  ValueCommand *- AlgorithmProtocol
+  class Service {
+    recursiveList(count)
+    loopList(count)
+    generalTermList(count)
+  }
+  class CommandProtocol {
+  }
+  class ValueCommand {
+    algorithm
+    exec(number)
+  }
+  class ListCommand {
+    command
+    exec(count)
+  }
 }
-class ValueCommand {
-  algorithm
-  exec(number)
-}
-class ListCommand {
-  command
-  exec(count)
-}
-class Recursive {
-  exec(number)
-}
-class Loop {
-  exec(number)
-}
-class GeneralTerm {
-  exec(number)
+package Domain {
+  AlgorithmProtocol <|-- Recursive
+  AlgorithmProtocol <|-- Loop
+  AlgorithmProtocol <|-- GeneralTerm
+  class Recursive {
+    exec(number)
+  }
+  class Loop {
+    exec(number)
+  }
+  class GeneralTerm {
+    exec(number)
+  }
 }
 `;
 
