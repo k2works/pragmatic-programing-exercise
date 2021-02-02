@@ -42,22 +42,36 @@ const contents = `
 `;
 
 const uml = `
-Fibonacci -> Protocol
-Protocol <|-- FibonacciRecursive
-Protocol <|-- FibonacciLoop
-Protocol <|-- FibonacciGeneralTerm
-class Fibonacci {
-  algorith
-  exec(number)
-  generateList(count)
+Service -> CommandProtocol
+ListCommand *- ValueCommand
+CommandProtocol <|-- ListCommand
+CommandProtocol <|-- ValueCommand
+ValueCommand *- AlgorithmProtocol
+AlgorithmProtocol <|-- Recursive
+AlgorithmProtocol <|-- Loop
+AlgorithmProtocol <|-- GeneralTerm
+class Service {
+  recursiveList(count)
+  loopList(count)
+  generalTermList(count)
 }
-class FibonacciRecursive {
+class CommandProtocol {
+}
+class ValueCommand {
+  algorithm
   exec(number)
 }
-class FibonacciLoop {
+class ListCommand {
+  command
+  exec(count)
+}
+class Recursive {
   exec(number)
 }
-class FibonacciGeneralTerm {
+class Loop {
+  exec(number)
+}
+class GeneralTerm {
   exec(number)
 }
 `;
