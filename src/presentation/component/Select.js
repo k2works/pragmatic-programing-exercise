@@ -1,4 +1,5 @@
-import { Command } from "../../domain/fibonacci/command";
+import { ValueCommand } from "../../domain/fibonacci/valueCommand";
+import { ListCommand } from "../../domain/fibonacci/listCommand";
 import { Recursive } from "../../domain/fibonacci/recursive";
 import { Loop } from "../../domain/fibonacci/loop";
 import { GeneralTerm } from "../../domain/fibonacci/generalTerm";
@@ -13,18 +14,18 @@ export const Select = (table) => {
     const value = e.target.value;
     switch (value) {
       case "1":
-        command = new Command(new Recursive());
-        list = command.generateList(100);
+        command = new ListCommand(new ValueCommand(new Recursive()));
+        list = command.exec(100);
         render(table(list));
         break;
       case "2":
-        command = new Command(new Loop());
-        list = command.generateList(100);
+        command = new ListCommand(new ValueCommand(new Loop()));
+        list = command.exec(100);
         render(table(list));
         break;
       case "3":
-        command = new Command(new GeneralTerm());
-        list = command.generateList(100);
+        command = new ListCommand(new ValueCommand(new GeneralTerm()));
+        list = command.exec(100);
         render(table(list));
         break;
       default:

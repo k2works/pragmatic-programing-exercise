@@ -1,4 +1,5 @@
-import { Command } from "../src/domain/fibonacci/command";
+import { ValueCommand } from "../src/domain/fibonacci/valueCommand";
+import { ListCommand } from "../src/domain/fibonacci/listCommand";
 import { Recursive } from "../src/domain/fibonacci/recursive";
 import { Loop } from "../src/domain/fibonacci/loop";
 import { GeneralTerm } from "../src/domain/fibonacci/generalTerm";
@@ -8,9 +9,9 @@ describe("フィボナッチ数列", () => {
   let loop;
   let generalTerm;
   beforeEach(() => {
-    recursive = new Command(new Recursive());
-    loop = new Command(new Loop());
-    generalTerm = new Command(new GeneralTerm());
+    recursive = new ValueCommand(new Recursive());
+    loop = new ValueCommand(new Loop());
+    generalTerm = new ValueCommand(new GeneralTerm());
   });
 
   test.each([
@@ -37,8 +38,8 @@ describe("フィボナッチ数列", () => {
   });
 
   test("10までのフィボナッチ配列を返す", () => {
-    const command = new Command(new Recursive());
-    const result = command.generateList(40);
+    const command = new ListCommand(new ValueCommand(new Recursive()));
+    const result = command.exec(40);
 
     expect(result[0]).toEqual(BigInt(0));
     expect(result[result.length - 1]).toEqual(BigInt(102334155));
