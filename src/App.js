@@ -1,10 +1,9 @@
-console.log("App.js: loaded");
+import { Fibonacci } from "./presentation/fibonacci";
+import { Service } from "./application/fibonacci/service";
 export class App {
   constructor() {
-    console.log("App initialized");
+    const service = new Service();
+    const list = service.recursiveList(100);
+    Fibonacci(list, service);
   }
-}
-
-export function sum(a, b) {
-  return a + b;
 }

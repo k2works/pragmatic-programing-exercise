@@ -1,58 +1,90 @@
-import marked from "marked"
+import marked from "marked";
 
 const contents = `
-## 機能名
+## フィボナッチ数列
+
+> n 番目のフィボナッチ数を Fn で表すと、Fn は再帰的に
+>
+> F0 = 0,
+>
+> F1 = 1,
+>
+> Fn + 2 = Fn + Fn + 1 (n ≧ 0)
+>
+> で定義される。これは、2つの初期条件を持つ漸化式である。
+>
+> この数列 (Fn)はフィボナッチ数列（フィボナッチすうれつ、（英: Fibonacci sequence）と呼ばれ、
+>
+> 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987,
+> 1597, 2584, 4181, 6765, 10946, …（オンライン整数列大辞典の数列 A45） と続く。最初の二項は 0, 1
+> であり、以後どの項もその直前の2つの項の和となっている。
+>
+> —  Wikipedia
+
+表形式にすると以下のようになります。
+
+|   |   |   |   |   |   |   |    |    |    |    |    |     |     |     |     |     |      |      |    |
+| --- | --- | --- | --- | --- | --- | --- | ---- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ---- | --- |
+| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7  | 8  | 9  | 10 | 11 | 12  | 13  | 14  | 15  | 16  | 18   | 19   | …​ |
+| 0 | 1 | 1 | 2 | 3 | 5 | 8 | 13 | 21 | 34 | 55 | 89 | 144 | 233 | 377 | 610 | 987 | 1597 | 2584 | …​ |
+
 ## 仕様
 ## TODOリスト
+- ~~0を渡したら0を返す~~
+- ~~1を渡したら1を返す~~
+- ~~2を渡したら1を返す~~
+- ~~3を渡したら2を返す~~
+- ~~4を渡したら3を返す~~
+- ~~5を渡したら5を返す~~
+- ~~1から100までのフィボナッチ数を画面に表示する~~
+-- ~~画面に表示する~~
+-- ~~1から100までのフィボナッチ数を生成する~~
 `;
 
 const uml = `
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-class ArrayList {
-  Object[] elementData
-  size()
+package Presentation {
+  class Fibonacci {}
 }
-enum TimeUnit {
-  DAYS
-  HOURS
-  MINUTES
+package Application {
+  Fibonacci -> Service
+  Service -> CommandProtocol
+  ListCommand *- ValueCommand
+  CommandProtocol <|-- ListCommand
+  CommandProtocol <|-- ValueCommand
+  ValueCommand *- AlgorithmProtocol
+  class Service {
+    recursiveList(count)
+    loopList(count)
+    generalTermList(count)
+  }
+  class CommandProtocol {
+  }
+  class ValueCommand {
+    algorithm
+    exec(number)
+  }
+  class ListCommand {
+    command
+    exec(count)
+  }
 }
-annotation SuppressWarnings
+package Domain {
+  AlgorithmProtocol <|-- Recursive
+  AlgorithmProtocol <|-- Loop
+  AlgorithmProtocol <|-- GeneralTerm
+  class Recursive {
+    exec(number)
+  }
+  class Loop {
+    exec(number)
+  }
+  class GeneralTerm {
+    exec(number)
+  }
+}
 `;
 
 const erd = `
-' hide the spot
-hide circle
-' avoid problems with angled crows feet
-skinparam linetype ortho
-entity "Entity01" as e01 {
-  *e1_id : number <<generated>>
-  --
-  *name : text
-  description : text
-}
-entity "Entity02" as e02 {
-  *e2_id : number <<generated>>
-  --
-  *e1_id : number <<FK>>
-  other_details : text
-}
-entity "Entity03" as e03 {
-  *e3_id : number <<generated>>
-  --
-  e1_id : number <<FK>>
-  other_details : text
-}
-e01 ||..o{ e02
-e01 |o..o{ e03
 `;
 
 //-----------------------------------------------------------------------------------------------
