@@ -47,6 +47,7 @@ npm install --save-dev cypress-cucumber-preprocessor
 npm install --save express uuid
 npm install --save-dev typescript jest ts-jest @types/jest @types/express
 npx tsc --init --rootDir src --outDir lib --esModuleInterop --resolveJsonModule --lib es6,dom --module commonjs
+npm install --save-dev supertest @types/supertest
 ```
 
 **[⬆ back to top](#構成)**
