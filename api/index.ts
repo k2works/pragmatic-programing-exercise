@@ -6,7 +6,7 @@ app.get("/api/:number", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   const { number } = req.params;
   const fib = new Fibonacci();
-  const result = fib.calc(parseInt(number, 10));
+  const result = fib.recursive(parseInt(number, 10));
   res.send(result.toString());
 });
 
