@@ -1,6 +1,7 @@
 import {
   Command,
-  Fibonacci,
+  FibonacciValue,
+  FibonacciList,
   FibonacciGeneralTerm,
   FibonacciLoop,
   FibonacciRecursive,
@@ -12,9 +13,9 @@ describe("フィボナッチ数列", () => {
   let loop: Command;
   let generalTerm: Command;
   beforeEach(() => {
-    recursive = new Fibonacci(new FibonacciRecursive());
-    loop = new Fibonacci(new FibonacciLoop());
-    generalTerm = new Fibonacci(new FibonacciGeneralTerm());
+    recursive = new FibonacciValue(new FibonacciRecursive());
+    loop = new FibonacciValue(new FibonacciLoop());
+    generalTerm = new FibonacciValue(new FibonacciGeneralTerm());
   });
 
   test.each([
@@ -41,8 +42,8 @@ describe("フィボナッチ数列", () => {
   });
 
   test("40までのフィボナッチ数列を返す", () => {
-    const command = new Fibonacci(new FibonacciRecursive());
-    const result = command.generateList(40);
+    const command = new FibonacciList(new FibonacciRecursive());
+    const result = command.exec(40);
 
     expect(result[0]).toEqual(BigInt(0));
     expect(result[result.length - 1]).toEqual(BigInt(102334155));

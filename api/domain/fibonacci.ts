@@ -1,8 +1,12 @@
 export interface Command {
+  exec(number: number): any;
+}
+
+export interface Algorithm {
   exec(number: number): bigint;
 }
 
-export class Fibonacci implements Command {
+export class FibonacciValue implements Command {
   private algorithm;
 
   constructor(algorithm: Command) {
@@ -13,12 +17,19 @@ export class Fibonacci implements Command {
     const result = this.algorithm.exec(number);
     return BigInt(result);
   }
+}
+export class FibonacciList implements Command {
+  private command;
 
-  generateList(count: number): bigint[] {
-    return Array.from(Array(count + 1).keys()).map((i) => this.exec(i));
+  constructor(command: Command) {
+    this.command = command;
+  }
+
+  exec(count: number): bigint[] {
+    return Array.from(Array(count + 1).keys()).map((i) => this.command.exec(i));
   }
 }
-export class FibonacciRecursive implements Command {
+export class FibonacciRecursive implements Algorithm {
   exec(number: number, memo: bigint[] = []): bigint {
     if (memo[number]) return memo[number];
     if (number === 0) return BigInt(0);
@@ -29,7 +40,7 @@ export class FibonacciRecursive implements Command {
   }
 }
 
-export class FibonacciLoop implements Command {
+export class FibonacciLoop implements Algorithm {
   exec(number: number): bigint {
     let a: number = 0;
     let b: number = 1;
@@ -45,7 +56,7 @@ export class FibonacciLoop implements Command {
   }
 }
 
-export class FibonacciGeneralTerm implements Command {
+export class FibonacciGeneralTerm implements Algorithm {
   exec(number: number): bigint {
     let a: number = ((1 + Math.sqrt(5)) / 2) ** number;
     let b: number = ((1 - Math.sqrt(5)) / 2) ** number;
