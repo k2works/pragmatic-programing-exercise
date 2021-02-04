@@ -20,4 +20,9 @@ describe("フィボナッチ数列", () => {
     const fib = new Fibonacci();
     expect(fib.calc(3)).toEqual(2);
   });
+
+  test("4を渡したら3を返す", () => {
+    const fib = new Fibonacci();
+    expect(fib.calc(4)).toEqual(3);
+  });
 });

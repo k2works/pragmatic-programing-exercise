@@ -3,6 +3,6 @@ export class Fibonacci {
     if (number === 0) return 0;
     if (number <= 2) return 1;
 
-    return 2;
+    return this.calc(number - 1) + this.calc(number - 2);
   }
 }
