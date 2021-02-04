@@ -1,8 +1,3 @@
-import { GeneralTerm } from "../../domain/fibonacci/generalTerm";
-import { Loop } from "../../domain/fibonacci/loop";
-import { ListCommand } from "./listCommand";
-import { ValueCommand } from "./valueCommand";
-
 export class Service {
   constructor(apiUrl = "http://localhost:3000/api") {
     this.apiUrl = apiUrl;
