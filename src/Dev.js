@@ -42,36 +42,29 @@ const contents = `
 `;
 
 const uml = `
-package Presentation {
-  class Fibonacci {}
-}
-package Application {
-  Fibonacci -> Service
-  Service -> CommandProtocol
-  ListCommand *- ValueCommand
-  CommandProtocol <|-- ListCommand
-  CommandProtocol <|-- ValueCommand
-  ValueCommand *- AlgorithmProtocol
-  class Service {
-    recursiveList(count)
-    loopList(count)
-    generalTermList(count)
+package API {
+  FibonacciList *- FibonacciValue
+  Command <|-- FibonacciValue
+  Command <|-- FibonacciList
+  FibonacciValue *- Algorithm
+  Algorithm <|-- Recursive
+  Algorithm <|-- Loop
+  Algorithm <|-- GeneralTerm
+
+  interface Command {
+    exec(count)
   }
-  class CommandProtocol {
-  }
-  class ValueCommand {
-    algorithm
+  interface Algorithm {
     exec(number)
   }
-  class ListCommand {
+  class FibonacciList {
     command
     exec(count)
   }
-}
-package Domain {
-  AlgorithmProtocol <|-- Recursive
-  AlgorithmProtocol <|-- Loop
-  AlgorithmProtocol <|-- GeneralTerm
+  class FibonacciValue {
+    algorithm
+    exec(number)
+  }
   class Recursive {
     exec(number)
   }
