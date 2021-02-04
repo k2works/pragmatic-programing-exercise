@@ -55,4 +55,15 @@ describe("フィボナッチ数列", () => {
     expect(result[0]).toEqual(BigInt(0));
     expect(result[result.length - 1]).toEqual(BigInt(102334155));
   });
+
+  test("100以上は計算できない", () => {
+    expect(() => recursive.exec(101)).toThrow("");
+  });
+
+  test("リストは100件まで", () => {
+    const command = new FibonacciList(
+      FibonacciTypeEnum.valueOf(FibonacciType.Recursive)
+    );
+    expect(() => command.exec(101)).toThrow("");
+  });
 });

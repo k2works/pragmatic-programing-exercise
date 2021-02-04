@@ -14,6 +14,8 @@ export class FibonacciValue implements Command {
   }
 
   exec(number: number): bigint {
+    if (number > 100) throw "100以上は計算できません";
+
     const result = this.algorithm.exec(number);
     return BigInt(result);
   }
@@ -26,6 +28,8 @@ export class FibonacciList implements Command {
   }
 
   exec(count: number): bigint[] {
+    if (count > 100) throw "100件以上は計算できません";
+
     return Array.from(Array(count + 1).keys()).map((i) => this.command.exec(i));
   }
 }
