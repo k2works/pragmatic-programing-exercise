@@ -1,14 +1,14 @@
 import {
-  Fibonacci,
+  Command,
   FibonacciGeneralTerm,
   FibonacciLoop,
   FibonacciRecursive,
 } from "../domain/fibonacci";
 
 describe("フィボナッチ数列", () => {
-  let fib: Fibonacci;
+  let fib: Command;
   beforeEach(() => {
-    fib = new Fibonacci();
+    fib = new FibonacciRecursive();
   });
 
   test.each([
@@ -19,7 +19,7 @@ describe("フィボナッチ数列", () => {
     [4, 3],
     [5, 5],
   ])("%iを渡したら%pを返す", (number: number, expected: number) => {
-    expect(fib.recursive(number)).toEqual(expected);
+    expect(fib.exec(number)).toEqual(expected);
   });
 
   test("大きな数値で計算する_再帰による実装", () => {
