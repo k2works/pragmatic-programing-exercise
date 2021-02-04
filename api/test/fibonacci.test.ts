@@ -5,17 +5,22 @@ import {
   FibonacciGeneralTerm,
   FibonacciLoop,
   FibonacciRecursive,
+  FibonacciTypeEnum,
+  FibonacciType,
 } from "../domain/fibonacci";
 
 describe("フィボナッチ数列", () => {
-  let fib: Command;
   let recursive: Command;
   let loop: Command;
   let generalTerm: Command;
   beforeEach(() => {
-    recursive = new FibonacciValue(new FibonacciRecursive());
-    loop = new FibonacciValue(new FibonacciLoop());
-    generalTerm = new FibonacciValue(new FibonacciGeneralTerm());
+    recursive = new FibonacciValue(
+      FibonacciTypeEnum.valueOf(FibonacciType.Recursive)
+    );
+    loop = new FibonacciValue(FibonacciTypeEnum.valueOf(FibonacciType.Loop));
+    generalTerm = new FibonacciValue(
+      FibonacciTypeEnum.valueOf(FibonacciType.GeneralTerm)
+    );
   });
 
   test.each([
@@ -42,7 +47,9 @@ describe("フィボナッチ数列", () => {
   });
 
   test("40までのフィボナッチ数列を返す", () => {
-    const command = new FibonacciList(new FibonacciRecursive());
+    const command = new FibonacciList(
+      FibonacciTypeEnum.valueOf(FibonacciType.Recursive)
+    );
     const result = command.exec(40);
 
     expect(result[0]).toEqual(BigInt(0));

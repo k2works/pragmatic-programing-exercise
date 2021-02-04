@@ -29,6 +29,27 @@ export class FibonacciList implements Command {
     return Array.from(Array(count + 1).keys()).map((i) => this.command.exec(i));
   }
 }
+
+export enum FibonacciType {
+  Recursive = 1,
+  Loop = 2,
+  GeneralTerm = 3,
+}
+
+export namespace FibonacciTypeEnum {
+  export function valueOf(value: FibonacciType) {
+    switch (value) {
+      case FibonacciType.Recursive:
+        return new FibonacciRecursive();
+      case FibonacciType.Loop:
+        return new FibonacciLoop();
+      case FibonacciType.GeneralTerm:
+        return new FibonacciGeneralTerm();
+      default:
+        throw "該当するアルゴリズムが存在しません";
+    }
+  }
+}
 export class FibonacciRecursive implements Algorithm {
   exec(number: number, memo: bigint[] = []): bigint {
     if (memo[number]) return memo[number];
