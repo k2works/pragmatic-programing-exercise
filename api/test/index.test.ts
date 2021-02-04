@@ -23,6 +23,6 @@ describe("フィボナッチ数列API", () => {
     const response = await request.get("/api/list/5");
 
     expect(response.status).toBe(200);
-    expect(response.text).toEqual("[0,1,1,2,3,5]");
+    expect(response.text).toEqual('["0","1","1","2","3","5"]');
   });
 });
