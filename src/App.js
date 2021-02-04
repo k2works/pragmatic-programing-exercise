@@ -3,7 +3,6 @@ import { Service } from "./application/fibonacci/service";
 export class App {
   constructor() {
     const service = new Service();
-    const list = service.recursiveList(100);
-    Fibonacci(list, service);
+    service.recursiveList(100).then((list) => Fibonacci(list, service));
   }
 }
