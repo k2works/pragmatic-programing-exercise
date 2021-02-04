@@ -81,6 +81,15 @@ package API {
     }
   }
 }
+package Client {
+  Service -> Command
+  package presentation {
+    Fibonacci -> Service
+    Fibonacci *-- Select
+    Fibonacci *-- Table
+  }
+}
+
 `;
 
 const erd = `
