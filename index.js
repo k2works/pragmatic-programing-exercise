@@ -1,4 +1,11 @@
 import { App } from "./src/App.js";
 import { setUp } from "./src/Dev.js";
-const app = new App();
-setUp();
+
+let app;
+if (process.env.NODE_ENV === "production") {
+  app = new App({ apiUrl: "/api" });
+  setUp();
+} else {
+  app = new App({ apiUrl: "http://localhost:3000/api" });
+  setUp();
+}

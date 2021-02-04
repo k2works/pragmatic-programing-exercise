@@ -1,6 +1,6 @@
 export class Service {
-  constructor(apiUrl = "http://localhost:3000/api") {
-    this.apiUrl = apiUrl;
+  constructor(params) {
+    this.apiUrl = params.apiUrl;
   }
 
   fetchApi(url, method) {
