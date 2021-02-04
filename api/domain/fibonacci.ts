@@ -14,11 +14,7 @@ export class Fibonacci implements Command {
   }
 
   generateList(count: number): number[] {
-    let result: number[] = [];
-    for (let i: number = 0; i <= count; i++) {
-      result.push(this.exec(i));
-    }
-    return result;
+    return Array.from(Array(count + 1).keys()).map((i) => this.exec(i));
   }
 }
 export class FibonacciRecursive implements Command {
