@@ -1,5 +1,6 @@
 import {
   Fibonacci,
+  FibonacciGeneralTerm,
   FibonacciLoop,
   FibonacciRecursive,
 } from "../domain/fibonacci";
@@ -32,6 +33,7 @@ describe("フィボナッチ数列", () => {
   });
 
   test("大きな数値で計算する_一般項による実装", () => {
-    expect(fib.generalTerm(40)).toEqual(102334155);
+    const command = new FibonacciGeneralTerm();
+    expect(command.exec(40)).toEqual(102334155);
   });
 });
