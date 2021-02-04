@@ -43,36 +43,42 @@ const contents = `
 
 const uml = `
 package API {
-  FibonacciList *- FibonacciValue
-  Command <|-- FibonacciValue
-  Command <|-- FibonacciList
-  FibonacciValue *- Algorithm
-  Algorithm <|-- Recursive
-  Algorithm <|-- Loop
-  Algorithm <|-- GeneralTerm
+  package application {
+    FibonacciList *- FibonacciValue
+    Command <|-- FibonacciValue
+    Command <|-- FibonacciList
+    FibonacciValue *- Algorithm
 
-  interface Command {
-    exec(count)
+    interface Command {
+      exec(count)
+    }
+    class FibonacciList {
+      command
+      exec(count)
+    }
+    class FibonacciValue {
+      algorithm
+      exec(number)
+    }
   }
-  interface Algorithm {
-    exec(number)
-  }
-  class FibonacciList {
-    command
-    exec(count)
-  }
-  class FibonacciValue {
-    algorithm
-    exec(number)
-  }
-  class Recursive {
-    exec(number)
-  }
-  class Loop {
-    exec(number)
-  }
-  class GeneralTerm {
-    exec(number)
+
+  package domain {
+    Algorithm <|-- Recursive
+    Algorithm <|-- Loop
+    Algorithm <|-- GeneralTerm
+
+    interface Algorithm {
+      exec(number)
+    }
+    class Recursive {
+      exec(number)
+    }
+    class Loop {
+      exec(number)
+    }
+    class GeneralTerm {
+      exec(number)
+    }
   }
 }
 `;

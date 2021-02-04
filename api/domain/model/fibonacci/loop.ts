@@ -1,4 +1,4 @@
-import { Algorithm } from "./algorithm";
+import { Algorithm } from "../../../application/fibonacci/algorithm";
 
 export class Loop implements Algorithm {
   exec(number: number): bigint {
