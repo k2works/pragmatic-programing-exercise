@@ -1,24 +1,16 @@
-import {
-  Command,
-  FibonacciValue,
-  FibonacciList,
-  FibonacciGeneralTerm,
-  FibonacciLoop,
-  FibonacciRecursive,
-  FibonacciTypeEnum,
-  FibonacciType,
-} from "../domain/fibonacci";
+import { Command } from "../application/fibonacci/command";
+import { List } from "../application/fibonacci/list";
+import { Value } from "../application/fibonacci/value";
+import { FibonacciType, FibonacciTypeEnum } from "../domain/type/fibonacci";
 
 describe("フィボナッチ数列", () => {
   let recursive: Command;
   let loop: Command;
   let generalTerm: Command;
   beforeEach(() => {
-    recursive = new FibonacciValue(
-      FibonacciTypeEnum.valueOf(FibonacciType.Recursive)
-    );
-    loop = new FibonacciValue(FibonacciTypeEnum.valueOf(FibonacciType.Loop));
-    generalTerm = new FibonacciValue(
+    recursive = new Value(FibonacciTypeEnum.valueOf(FibonacciType.Recursive));
+    loop = new Value(FibonacciTypeEnum.valueOf(FibonacciType.Loop));
+    generalTerm = new Value(
       FibonacciTypeEnum.valueOf(FibonacciType.GeneralTerm)
     );
   });
@@ -47,7 +39,7 @@ describe("フィボナッチ数列", () => {
   });
 
   test("40までのフィボナッチ数列を返す", () => {
-    const command = new FibonacciList(
+    const command = new List(
       FibonacciTypeEnum.valueOf(FibonacciType.Recursive)
     );
     const result = command.exec(40);
@@ -61,7 +53,7 @@ describe("フィボナッチ数列", () => {
   });
 
   test("リストは100件まで", () => {
-    const command = new FibonacciList(
+    const command = new List(
       FibonacciTypeEnum.valueOf(FibonacciType.Recursive)
     );
     expect(() => command.exec(101)).toThrow("");
