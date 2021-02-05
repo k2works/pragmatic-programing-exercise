@@ -1,22 +1,33 @@
-import { GeneralTerm } from "../../domain/fibonacci/generalTerm";
-import { Loop } from "../../domain/fibonacci/loop";
-import { Recursive } from "../../domain/fibonacci/recursive";
-import { ListCommand } from "./listCommand";
-import { ValueCommand } from "./valueCommand";
-
 export class Service {
-  recursiveList(count) {
-    const command = new ListCommand(new ValueCommand(new Recursive()));
-    return command.exec(count);
+  constructor(params) {
+    this.apiUrl = params.apiUrl;
   }
 
-  loopList(count) {
-    const command = new ListCommand(new ValueCommand(new Loop()));
-    return command.exec(count);
+  fetchApi(url, method) {
+    const command = (resolve, reject) => {
+      fetch(url, { method })
+        .then((response) => response.json())
+        .then((data) => resolve(data))
+        .then((error) => reject(error));
+    };
+    return new Promise(command);
   }
 
-  generalTermList(count) {
-    const command = new ListCommand(new ValueCommand(new GeneralTerm()));
-    return command.exec(count);
+  async recursiveList(count) {
+    const url = `${this.apiUrl}/list/1/${count}`;
+    const result = await this.fetchApi(url, "POST");
+    return result;
+  }
+
+  async loopList(count) {
+    const url = `${this.apiUrl}/list/2/${count}`;
+    const result = await this.fetchApi(url, "POST");
+    return result;
+  }
+
+  async generalTermList(count) {
+    const url = `${this.apiUrl}/list/3/${count}`;
+    const result = await this.fetchApi(url, "POST");
+    return result;
   }
 }

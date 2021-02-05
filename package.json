@@ -10,7 +10,8 @@
     "start": "nf start -j Procfile",
     "app": "browser-sync start -s ./ --watch --port 8080 --ui-port 8081",
     "test": "jest --coverage",
-    "watch": "webpack --watch --config webpack.config.js",
+    "test:watch": "jest --coverage --watch",
+    "watch": "webpack --watch --config webpack.dev.config.js",
     "build": "webpack --config webpack.config.js",
     "deploy:local": "vercel dev",
     "deploy": "vercel",
@@ -33,6 +34,9 @@
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/register": "^7.12.10",
+    "@types/express": "^4.17.11",
+    "@types/jest": "^26.0.20",
+    "@types/supertest": "^2.0.10",
     "browser-sync": "^2.26.14",
     "cpx": "^1.5.0",
     "cypress-cucumber-preprocessor": "^4.0.0",
@@ -42,12 +46,17 @@
     "marked": "^1.2.8",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
+    "supertest": "^6.1.3",
+    "ts-jest": "^26.5.0",
+    "typescript": "^4.1.3",
     "watch": "^1.0.2",
     "webpack": "^5.18.0",
     "webpack-cli": "^4.4.0"
   },
   "dependencies": {
-    "cypress": "^6.3.0"
+    "cypress": "^6.3.0",
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
   },
   "cypress-cucumber-preprocessor": {
     "step_definitions": "cypress/support/step_definitions/",
@@ -55,10 +64,19 @@
   },
   "jest": {
     "moduleFileExtensions": [
+      "ts",
       "js"
     ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.json"
+      }
+    },
     "testMatch": [
-      "**/**/*.test.js"
+      "**/**/*.test.ts"
     ]
   }
 }

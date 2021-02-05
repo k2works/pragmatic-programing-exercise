@@ -8,16 +8,13 @@ export const Select = (table, service) => {
     const value = e.target.value;
     switch (value) {
       case "1":
-        list = service.recursiveList(100);
-        render(table(list));
+        service.recursiveList(100).then((list) => render(table(list)));
         break;
       case "2":
-        list = service.loopList(100);
-        render(table(list));
+        list = service.loopList(100).then((list) => render(table(list)));
         break;
       case "3":
-        list = service.generalTermList(100);
-        render(table(list));
+        list = service.generalTermList(100).then((list) => render(table(list)));
         break;
       default:
         throw "該当するアルゴリズムが存在しません";

@@ -2,16 +2,16 @@
 
 [![Azure DevOps](https://img.shields.io/badge/AzureDevOps-ppe-blue)](https://dev.azure.com/k2works/ppe)
 ![Node.js CI](https://github.com/k2works/pragmatic-programing-exercise/workflows/Node.js%20CI/badge.svg)
+
 ## 概要
 
 ### 目的
 
 ### 前提
 
-| ソフトウェア   | バージョン | 備考 |
-| :------------- | :--------- | :--- |
-| nodejs         | 10.16.3     |      |
-
+| ソフトウェア | バージョン | 備考 |
+| :----------- | :--------- | :--- |
+| nodejs       | 10.16.3    |      |
 
 ### Quick Start
 
@@ -44,18 +44,20 @@ npm install --save-dev npm-run-all watch foreman cpx rimraf marked
 touch Procfile
 npm install cypress
 npm install --save-dev cypress-cucumber-preprocessor
+npm install --save express uuid
+npm install --save-dev typescript jest ts-jest @types/jest @types/express
+npx tsc --init --rootDir src --outDir lib --esModuleInterop --resolveJsonModule --lib es6,dom --module commonjs
+npm install --save-dev supertest @types/supertest
 ```
 
 **[⬆ back to top](#構成)**
 
 ### 配置
 
-
 ```bash
 npm i -g vercel
 npm run deploy
 ```
-
 
 **[⬆ back to top](#構成)**
 

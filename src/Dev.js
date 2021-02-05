@@ -42,46 +42,70 @@ const contents = `
 `;
 
 const uml = `
-package Presentation {
-  class Fibonacci {}
+package API {
+  package application {
+    FibonacciList *- FibonacciValue
+    Command <|-- FibonacciValue
+    Command <|-- FibonacciList
+    FibonacciValue *- Algorithm
+
+    interface Command {
+      exec(count)
+    }
+    class FibonacciList {
+      command
+      exec(count)
+    }
+    class FibonacciValue {
+      algorithm
+      exec(number)
+    }
+  }
+
+  package domain {
+    Algorithm <|-- Recursive
+    Algorithm <|-- Loop
+    Algorithm <|-- GeneralTerm
+    Recursive --> FibonacciValueObject
+    Loop --> FibonacciValueObject
+    GeneralTerm --> FibonacciValueObject
+
+    interface Algorithm {
+      exec(number)
+    }
+    class Recursive {
+      exec(number)
+    }
+    class Loop {
+      exec(number)
+    }
+    class GeneralTerm {
+      exec(number)
+    }
+    class FibonacciValueObject {
+      value
+      equal(other)
+      add(other)
+    }
+  }
+
+  package presentation {
+    Express --> Command
+    class Express {
+    }
+  }
 }
-package Application {
-  Fibonacci -> Service
-  Service -> CommandProtocol
-  ListCommand *- ValueCommand
-  CommandProtocol <|-- ListCommand
-  CommandProtocol <|-- ValueCommand
-  ValueCommand *- AlgorithmProtocol
-  class Service {
-    recursiveList(count)
-    loopList(count)
-    generalTermList(count)
-  }
-  class CommandProtocol {
-  }
-  class ValueCommand {
-    algorithm
-    exec(number)
-  }
-  class ListCommand {
-    command
-    exec(count)
+package Client {
+  Service -> Express
+  package View {
+    Fibonacci -> Service
+    package Component {
+      Fibonacci *-- Select
+      Fibonacci *-- Table
+    }
   }
 }
-package Domain {
-  AlgorithmProtocol <|-- Recursive
-  AlgorithmProtocol <|-- Loop
-  AlgorithmProtocol <|-- GeneralTerm
-  class Recursive {
-    exec(number)
-  }
-  class Loop {
-    exec(number)
-  }
-  class GeneralTerm {
-    exec(number)
-  }
-}
+
 `;
 
 const erd = `
