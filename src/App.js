@@ -1,4 +1,4 @@
-import { Fibonacci } from "./presentation/fibonacci";
+import { Fibonacci } from "./view/fibonacci";
 import { Service } from "./application/fibonacci/service";
 export class App {
   constructor(params) {

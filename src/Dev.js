@@ -83,10 +83,12 @@ package API {
 }
 package Client {
   Service -> Command
-  package presentation {
+  package View {
     Fibonacci -> Service
-    Fibonacci *-- Select
-    Fibonacci *-- Table
+    package Component {
+      Fibonacci *-- Select
+      Fibonacci *-- Table
+    }
   }
 }
 
