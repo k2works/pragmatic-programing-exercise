@@ -66,6 +66,9 @@ package API {
     Algorithm <|-- Recursive
     Algorithm <|-- Loop
     Algorithm <|-- GeneralTerm
+    Recursive --> FibonacciValueObject
+    Loop --> FibonacciValueObject
+    GeneralTerm --> FibonacciValueObject
 
     interface Algorithm {
       exec(number)
@@ -78,6 +81,11 @@ package API {
     }
     class GeneralTerm {
       exec(number)
+    }
+    class FibonacciValueObject {
+      value
+      equal(other)
+      add(other)
     }
   }
 
