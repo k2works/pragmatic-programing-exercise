@@ -1,3 +1,5 @@
+import supertest from "supertest";
+const app = require("../index");
 import { Command } from "../application/fibonacci/command";
 import { List } from "../application/fibonacci/list";
 import { Value } from "../application/fibonacci/value";
@@ -13,6 +15,32 @@ describe("フィボナッチ数列", () => {
     generalTerm = new Value(
       FibonacciTypeEnum.valueOf(FibonacciType.GeneralTerm)
     );
+  });
+
+  describe("プレゼンテーション", () => {
+    test("0を渡したら0を返す", async () => {
+      const request = supertest(app);
+      const response = await request.get("/api/value/1/0");
+
+      expect(response.status).toBe(200);
+      expect(response.text).toEqual("0");
+    });
+
+    test("4を渡したら3を返す", async () => {
+      const request = supertest(app);
+      const response = await request.get("/api/value/1/4");
+
+      expect(response.status).toBe(200);
+      expect(response.text).toEqual("3");
+    });
+
+    test("5までのフィボナッチ数列を返す", async () => {
+      const request = supertest(app);
+      const response = await request.post("/api/list/1/5");
+
+      expect(response.status).toBe(200);
+      expect(response.text).toEqual('["0","1","1","2","3","5"]');
+    });
   });
 
   describe("アプリケーション", () => {
