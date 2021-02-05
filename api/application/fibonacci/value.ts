@@ -11,6 +11,6 @@ export class Value implements Command {
     if (number > 100) throw "100以上は計算できません";
 
     const result = this.algorithm.exec(number);
-    return BigInt(result);
+    return result.value;
   }
 }
