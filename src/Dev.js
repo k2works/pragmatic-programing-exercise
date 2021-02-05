@@ -10,7 +10,9 @@ const contents = `
 > Todoアプリでは、ユーザーが次のような操作した場合に、Todoアイテムを追加します。
 >
 > 入力欄にTodoアイテムのタイトルを入力する
+>
 > 入力欄でEnterキーを押して送信する
+>
 > TodoリストにTodoアイテムが追加される
 
 > [ユースケース:Todoアプリ](https://jsprimer.net/use-case/todoapp/)
