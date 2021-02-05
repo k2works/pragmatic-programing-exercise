@@ -16,13 +16,37 @@ const contents = `
 > [ユースケース:Todoアプリ](https://jsprimer.net/use-case/todoapp/)
 
 ## TODOリスト
-- Todoアイテムを追加する
-- Todoアイテムを更新する
-- Todoアイテムを削除する
-- Todoアイテム数（合計）の表示
+- ~~Todoアイテムを追加する~~
+- ~~Todoアイテムを更新する~~
+- ~~Todoアイテムを削除する~~
+- ~~Todoアイテム数（合計）の表示~~
 `;
 
 const uml = `
+class App {
+  todoListView
+  todoListModel
+  handleAdd()
+  handleUpdate()
+  handleDelete()
+  mount()
+}
+package view{
+  App *- TodoListView
+  TodoListView -> TodoItemView
+
+  class TodoItemView {}
+  class TodoListView {}
+}
+
+package model {
+  App *-- TodoListModel
+  App --> TodoItemModel
+  TodoListModel *- TodoItemModel
+
+  class TodoItemModel {}
+  class TodoListModel {}
+}
 `;
 
 const erd = `
