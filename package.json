@@ -10,6 +10,7 @@
     "start": "nf start -j Procfile",
     "app": "browser-sync start -s ./ --watch --port 8080 --ui-port 8081",
     "test": "jest --coverage",
+    "test:watch": "jest --coverage --watch",
     "watch": "webpack --watch --config webpack.config.js",
     "build": "webpack --config webpack.config.js",
     "deploy:local": "vercel dev",
