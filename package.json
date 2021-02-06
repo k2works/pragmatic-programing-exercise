@@ -50,6 +50,7 @@
     "webpack-cli": "^4.4.0"
   },
   "dependencies": {
+    "@nano-sql/core": "^2.3.7",
     "cypress": "^6.3.0"
   },
   "cypress-cucumber-preprocessor": {

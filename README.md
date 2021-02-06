@@ -45,6 +45,7 @@ npm install --save-dev npm-run-all watch foreman cpx rimraf marked
 touch Procfile
 npm install cypress
 npm install --save-dev cypress-cucumber-preprocessor
+npm i @nano-sql/core --save
 ```
 
 **[⬆ back to top](#構成)**
