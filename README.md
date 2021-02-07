@@ -2,16 +2,16 @@
 
 [![Azure DevOps](https://img.shields.io/badge/AzureDevOps-ppe-blue)](https://dev.azure.com/k2works/ppe)
 ![Node.js CI](https://github.com/k2works/pragmatic-programing-exercise/workflows/Node.js%20CI/badge.svg)
+
 ## 概要
 
 ### 目的
 
 ### 前提
 
-| ソフトウェア   | バージョン | 備考 |
-| :------------- | :--------- | :--- |
-| nodejs         | 10.16.3     |      |
-
+| ソフトウェア | バージョン | 備考 |
+| :----------- | :--------- | :--- |
+| nodejs       | 10.16.3    |      |
 
 ### Quick Start
 
@@ -40,22 +40,22 @@ npm start
 npm init -y
 npm install --save-dev browser-sync jest @babel/core @babel/cli @babel/preset-env @babel/register
 npm install webpack webpack-cli html-webpack-plugin --save-dev
+npm install --save-dev style-loader css-loader
 npm install --save-dev npm-run-all watch foreman cpx rimraf marked
 touch Procfile
 npm install cypress
 npm install --save-dev cypress-cucumber-preprocessor
+npm i @nano-sql/core --save
 ```
 
 **[⬆ back to top](#構成)**
 
 ### 配置
 
-
 ```bash
 npm i -g vercel
 npm run deploy
 ```
-
 
 **[⬆ back to top](#構成)**
 
